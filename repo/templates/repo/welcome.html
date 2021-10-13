@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        h1{
+            text-align: center;
+        }
+
+        .content{
+            text-align: center;
+            background-color: red;
+            margin: auto;
+        }
+        #data-content-id, #data-result-id{
+            width: 80%;
+            margin: auto;
+            margin: 20px 20px;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+        main pre{
+            margin: 20px 0px;
+            border-radius: 5%;
+            box-shadow: 2px 1px 2px 1px gray;
+        }
+        table, tr, td{
+            
+            margin: 10px 0px;
+            border-collapse: collapse;
+            border-radius: 20px;
+        }
+        tr,td{
+            background-color: aqua;
+        }
+        .result{
+            display: inline-block;
+        }
+        #page-select{
+            display: inline-block;
+        }
+        .table-result-c {
+            margin: 10px 20px;
+        }
+        .table-result-c tr th{
+            padding-left: 10px;
+            background-color: yellow;
+
+        }
+        thead#thead tr{
+            background-color: darkgray;
+            color: white;
+        }
+        #tbody-result-button #tbody-button{
+            margin: 10px  0px;
+        }
+
+
+    </style>
+
+    <title>Repos</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <!-- start of main -->
+    <main>
+        <h1>
+            welcome to our Repos statistics
+        </h1>
+
+
+        <pre>
+            it is a simple app with simple user interface.
+            you first select the page then choose either to display the repos
+            or display the result.
+        </pre>
+        
+
+
+        <div class="content">
+
+            <!-- get repos form -->
+            <form id='page-select' action="">
+                <select name="page" id="page-select-el">
+
+                </select>
+                <input type="submit" class="btn btn-primary" value="Select Page">
+            </form>
+            <!-- get result form -->
+            <div class="result">
+                <form id="form-result" action="">
+                    <!-- {% csrf_token %} -->
+                    <button type="submit" class="btn btn-danger">proceed for result</button>
+                </form>
+            </div>
+        </div>
+        <!-- <div class="container-fluid">
+            <div class="row">
+                <div class="col-10">
+                    <div id="data-content-id" class="data-content">
+                        <table class=table style="width: 70vw">
+                                <thead id="thead">
+                                <a class="btn btn-primary" data-toggle="collapse" href="#tbody" role="button" aria-expanded="false" aria-controls="tbody" disabled>
+            
+                                    <tr id="header-r">
+                                    </tr>
+                                </a>
+            
+                                <button class="btn btn-primary" id="tbody-button" type="button" data-toggle="collapse" data-target="#tbody" aria-expanded="false" aria-controls="tbody" disabled>
+                                    <tr id="header-r">
+                                    </tr>
+                                </button>
+                                </thead>
+                  
+            
+                            <tbody id="tbody" class="collapse">
+                                
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+            <!-- repos table  -->
+        <div id="data-content-id" class="data-content">
+            <table class=table>
+                    <thead id="thead">
+                    <!-- <a class="btn btn-primary" data-toggle="collapse" href="#tbody" role="button" aria-expanded="false" aria-controls="tbody" disabled>
+
+                        <tr id="header-r">
+                        </tr>
+                    </a> -->
+
+                    <button class="btn btn-primary" id="tbody-button" type="button" data-toggle="collapse" data-target="#tbody" aria-expanded="false" aria-controls="tbody" disabled>
+                        show/hide
+
+                        <tr id="header-r">
+                        </tr>
+                    </button>
+            
+                </thead>
+      
+
+                <tbody id="tbody" class="collapse">
+                    
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- result table -->
+        <div id="data-result-id" class="data-content">
+            <table class=table>
+                    <thead id="thead-result">
+                    <!-- <a class="btn btn-primary" data-toggle="collapse" href="#tbody-result" role="button" aria-expanded="false" aria-controls="tbody-result">
+
+                        <tr id="header-result-r">
+                        </tr>
+                    </a> -->
+                    <button class="btn btn-primary" id="tbody-result-button" type="button" data-toggle="collapse" data-target="#tbody-result" aria-expanded="false" aria-controls="tbody-result" disabled>
+                        <tr id="header-result-r">
+                        </tr>
+                    </button>
+                    </thead>
+      
+
+                <tbody id="tbody-result" class="collapse">
+                    
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Link with href
+            </a>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Button with data-target
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+
+              <table class="table-result-c">
+                
+                <caption>Results</caption>    
+                  
+                <tbody id='table-resultt'>
+
+                </tbody>
+
+              </table>    
+          </div> -->
+
+    </main>
+    <!-- end of main -->
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+        const URLREPOS = 'https://api.github.com/search/repositories?q=created&sort=stars&order=desc';
+        //get repos starting from page1
+        //get all repos in certain page default page is 1
+        const getRepos = (url, page=1)=>{
+            fetch(`${url}&page=${page}`)
+            .then(res=>res.json())
+            .then(data=>console.log(data))
+            .catch(err=>console.log(err))
+        }
+        //get all repos in certain page default and 100 repoper page
+        const displayRepos = (url, page)=>{
+            return fetch(`${url}&page=${page}&per_page=100`)
+            .then(res=>res.json())
+            .catch(err=>console.log(err))
+        }
+        const exRepos=(url)=>{
+            return fetch(url)
+            .then(res=>res.json())
+            .catch(err=>console.log(err))
+        }
+        //get total repos number and create options elements
+        const getCount = (url)=>{
+            fetch(url)
+            .then(res=>res.json())
+            .then(data=> {
+                
+                const frag = document.createDocumentFragment();
+            for(let i=0; i<= (data.total_count/100); i++){
+                let x = document.createElement('option');
+                x.value = i+1;
+                x.innerText = `page${i+1}`;
+                frag.appendChild(x);
+                
+            }
+            const pSE = document.getElementById('page-select-el');
+            pSE.appendChild(frag);
+            })
+            .catch(err=>console.log(err))
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+            
+            
+            
+            getCount(URLREPOS);
+            const form = document.getElementById('page-select');
+            // creating repos table rows
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                document.getElementById('tbody-button').removeAttribute('disabled');
+                const select = document.getElementById('page-select-el');
+                let value = select.value;
+                displayRepos(URLREPOS, value).then(data=>{
+                    const headRaw = document.getElementById('header-r');
+                    headRaw.innerHTML='';
+                    const idh = document.createElement('th');
+                    idh.innerText = 'Id';
+                    headRaw.appendChild(idh)
+                    const nodeH = document.createElement('th');
+                    nodeH.innerText = 'Node Id';
+                    headRaw.appendChild(nodeH);
+                    const nameH = document.createElement('th');
+                    nameH.innerText = 'Name';
+                    headRaw.appendChild(nameH);
+                    const ownerH = document.createElement('th');
+                    ownerH.innerText = 'Owner';
+                    headRaw.appendChild(ownerH);
+                    const languageH = document.createElement('th');
+                    languageH.innerText = 'Language';
+                    headRaw.appendChild(languageH);
+                    const tBody = document.getElementById('tbody');
+                    tBody.innerHTML = '';
+                    const fbody = document.createDocumentFragment()
+                    for(let item of data.items){
+                        const r= document.createElement('tr');
+                       
+                        const id = document.createElement('td')
+                        id.innerText= item.id;
+                        r.appendChild(id);
+                        const nodeId = document.createElement('td')
+                        nodeId.innerText = item.node_id;
+                        r.appendChild(nodeId);
+
+                        const name = document.createElement('td')
+                        name.innerText = item.name
+                        r.appendChild(name);
+
+                        const owner = document.createElement('td')
+                        owner.innerText = item.owner.login;
+                        r.appendChild(owner);
+
+                        const language = document.createElement('td')
+                        language.innerText = item.language;
+                        r.appendChild(language);
+                        fbody.appendChild(r);
+                    }
+                    tBody.appendChild(fbody)
+                    
+                    //document.getElementById('data-content-id').innerText = JSON.stringify(data.items)
+                });
+
+            })
+
+            //getRepos(URLREPOS);
+            //getRepos(URLREPOS,2);
+            //getRepos(`${URLREPOS}&page=3`);
+            const resultTable = document.getElementById('form-result')
+            //creating result table rows
+            resultTable.addEventListener('submit', function(e){
+                e.preventDefault()
+                document.getElementById('tbody-result-button').removeAttribute('disabled');
+
+                const select = document.getElementById('page-select-el');
+                let value = select.value;
+                exRepos(`${URLREPOS}&page=${value}&per_page=100`).then(data=>{
+                    console.log('res', data)
+                    fetch('http://127.0.0.1:8000/repo/results', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                        
+                    }).then(data=> data.json()).then(
+                        data=>{
+                        console.log(data)
+
+
+                        const headRaw = document.getElementById('header-result-r');
+                        headRaw.innerHTML='';
+                        const languageh = document.createElement('th');
+                        languageh.innerText = 'Id';
+                        headRaw.appendChild(languageh)
+                        const nodeH = document.createElement('th');
+                        nodeH.innerText = 'Node Id';
+                        headRaw.appendChild(nodeH);
+                        const counth = document.createElement('th');
+                        counth.innerText = 'Count';
+                        headRaw.appendChild(counth);
+                        const tBody = document.getElementById('tbody-result');
+                        tBody.innerHTML = '';
+                        const fBody = document.createDocumentFragment();
+                        Object.keys(data).map(key=>{
+                            const tr = document.createElement('tr');
+                            const tf = document.createDocumentFragment();
+                            const tlanguage= document.createElement('td');
+                            tlanguage.innerText = key;
+                            tf.appendChild(tlanguage);
+                            const trepos = document.createElement('td');
+                            trepos.innerText = data[key];
+                            tf.appendChild(trepos);
+                            const tcount = document.createElement('td');
+                            tcount.innerText = JSON.parse(data[key]).length;
+                            tf.appendChild(tcount);
+                            tr.appendChild(tf)
+                            fBody.appendChild(tr);
+
+
+                        })
+                        tBody.appendChild(fBody);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        const cont = document.getElementById('collapseExample')
+                        //cont.innerText = JSON.stringify(data)
+                        const resultData = document.getElementById('table-resultt');
+                        resultData.innerHTML = ''
+                        Object.keys(data).map(key=>{
+                            const tr = document.createElement('tr');
+                            const tf = document.createDocumentFragment();
+                            const th = document.createElement('th');
+                            th.innerText = key;
+                            tf.appendChild(th)
+                            for(const id of data[key]){
+                                const td = document.createElement('td');
+                                td.innerText=id;
+                                tf.appendChild(td);
+
+                            } 
+                            let tc = document.createElement('th');
+                            tc.innerText = JSON.parse(data[key]).length
+                            tf.appendChild(tc)
+                            tr.appendChild(tf)
+                            resultData.appendChild(tr)
+                        })
+                    })
+                })
+            })
+        })
+
+
+    </script>
+</body>
+</html>
